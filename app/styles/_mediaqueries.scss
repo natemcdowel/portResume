@@ -1,0 +1,177 @@
+@import '_common';
+
+@media screen and (max-width: 1440px) {  // 3-up grid
+	#container {
+		#about-details {
+			.column {
+				width: 33.33%;
+			}
+			#source {
+				position: absolute;
+				right: 0%;
+				width: 20%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 960px) {  // 2-up grid
+	#container {
+		#about-details {
+			.column {
+				width: 50%;
+			}
+			#source {
+				position: static;
+			}
+			#resume span {
+		    	display: inline-block;
+		    	margin-left: 130px;
+			}
+			.fc-icon-logo-rotated {
+				top: 54px;
+			}
+		}
+		.project-details {
+			.awards {
+				clear: both;
+				margin-top: $padding;
+			}
+			p {
+	    		@include font($size: 14px, $line-height: 25px);
+	    	}
+		}
+		#grid.about-active {
+            padding-top: 183px;
+        }
+        .item-link p {
+        	line-height: 20px;
+        }
+		.about-animation {
+	        height: 183px;
+	        &.ng-enter { height: 0px; }
+	        &.ng-enter-active, &.ng-leave { height: 183px; }
+	        &.ng-leave-active { height: 0px; }
+    	}
+	    .project-animation {
+	        max-height: 875px;
+	        &.ng-enter { max-height: 0px; }
+	        &.ng-enter-active, &.ng-leave { max-height: 875px; }
+	        &.ng-leave-active { max-height: 0px; }
+	    }
+	    #logo.logo-animation {
+			&.ng-hide {
+				a i {
+					top: 152px;
+					right: 58px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 620px) { // random size for style adjustments in between 2-up and 1-up grid
+	#container {
+		#about-details {
+			.fc-icon-logo-rotated { display: none; }
+			.column {
+				float: none;
+				width: 100%;
+				padding-top: 20px;
+				span {
+					margin-left: 0 !important;
+					padding-left: $padding;
+				}
+				&#contact a.email {
+					margin-left: $padding;
+				}
+			}
+			#resume, #source {
+				float: left;
+				width: 50%;
+			}
+			#source span {
+				padding-left: 0;
+			}
+		}
+		#grid.about-active {
+            padding-top: 230px;
+        }
+		.about-animation {
+	        height: 230px;
+	        &.ng-enter { height: 0px; }
+	        &.ng-enter-active, &.ng-leave { height: 230px; }
+	        &.ng-leave-active { height: 0px; }
+    	}
+	    .project-details {
+	    	.alpha, .omega {
+	    		float: none;
+	    		width: 100%;
+	    		.project-details-inner {
+	    			padding: $padding;
+	    		}
+	    	}
+	    	.omega .project-details-inner {
+	    		padding-top: 0;
+	    	}
+	    	p {
+	    		@include font($size: 14px, $line-height: 25px);
+	    	}
+	    }
+	    .project-animation {
+	        max-height: 1020px;
+	        &.ng-enter { max-height: 0px; }
+	        &.ng-enter-active, &.ng-leave { max-height: 1020px; }
+	        &.ng-leave-active { max-height: 0px; }
+	    }
+	    #logo.logo-animation {
+			&.ng-hide {
+				a i {
+					opacity: 0;
+					top: 90px;
+					right: 45px;
+					font-size: 54px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 321px) { // 1-up grid
+	#container {
+		.project-details {
+			.company, .awards {
+				clear: both;
+				margin-top: 10px;
+				padding-top: 0;
+			}
+			.tools {
+				padding-top: 10px;
+			}
+			.disclaimer {
+	    		font-size: 10px;
+	    	}
+		}
+		.project-animation {
+	        max-height: 1100px;
+	        &.ng-enter { max-height: 0px; }
+	        &.ng-enter-active, &.ng-leave { max-height: 1100px; }
+	        &.ng-leave-active { max-height: 0px; }
+	    }
+	}
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { // retina displays
+	body, #about-details {
+		background: $background-pattern-2x;
+		background-size: 50% 50% !important;
+	}
+	#container {
+	    .grid-project {
+	    	.selected-tip {
+	    		background: url(/images/selected_@2X.png) no-repeat;
+	    		background-size: 111px 66px !important;
+	    	}
+	    }
+	}
+}

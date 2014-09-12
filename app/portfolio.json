@@ -1,0 +1,136 @@
+{
+	"about": {
+		"name": "Nathan McDowell",
+		"profession": "Javascript Developer",
+		"resume": {
+			"title": "My Resume",
+			"link": {
+				"url": "/resume/McDowell_Resume.pdf",
+				"title": "PDF"
+			}
+		},
+		"contact": {
+			"title": "Contact",
+			"contacts": [
+				{
+					"title": "Email",
+					"url": "nateclaudemcdowel@gmail.com"
+				},
+				{
+					"title": "LinkedIn",
+					"url": "http://www.linkedin.com/pub/nathan-mcdowell/31/405/10b/"
+				}
+			]
+		},
+		"source": {
+			"title": "Code Sample",
+			"link": {
+				"url": "https://github.com/natemcdowel",
+				"title": "View Source"
+			}
+		}
+	},
+	"projects":[
+		{
+			"title": "Vitals Choice Core Platform",
+			"client": "Vitals, HCSC, Blue-Cross Blue Shield",
+			"descriptionShort": "Configurable physician finder and review Tool with flexibility to be used by a growing number of healthcare clients",
+			"description": "Configurable physician finder and review Tool with flexibility to be used by a growing number of healthcare clients",
+			"links": [
+				{"title": "Visit the site", "url": "http://my.providerfinderonline.com"}
+			],
+			"images": [
+				{"src": "/images/vitals_1.jpg", "loaded": false},
+				{"src": "/images/vitals_2.jpg", "loaded": false}
+			],
+			"tools": ["JavaScript", "AngularJS", "NodeJS", "HTML5", "CSS3", "Bootstrap", "Grunt", "Bower", "Ruby on Rails"]
+		},
+		{
+			"title": "Bandmix.com",
+			"company": "Echo Media",
+			"descriptionShort": "BandMix.com is a network for musicians and bands. Form a band or set up a jam with the largest musicians wanted and musician classifieds online.",
+			"description": "BandMix.com is a network for musicians and bands. Form a band or set up a jam with the largest musicians wanted and musician classifieds online.",
+			"links": [
+				{"title": "Visit the site", "url": "http://www.bandmix.com/"}
+			],
+			"images": [
+				{"src": "/images/bandmix_1.png", "loaded": false},
+				{"src": "/images/bandmix_2.png", "loaded": false}
+			],
+			"tools": ["JavaScript", "jQuery", "Backbone", "PxLoader", "HTML5", "CSS3", "SASS", "Yeoman"]
+		},
+		{
+			"title": "Cartoon Network's CN Sayin' App",
+			"client": "Toolbox #9",
+			"company": "Cartoon Network",
+			"descriptionShort": "I created the moderation tool UX for Cartoon Network's video upload app.",
+			"description": "Are you CN what we’re sayin’? Now you and your family have a chance to be on Cartoon Network!",
+			"links": [
+				{"title": "Visit the store", "url": "https://itunes.apple.com/us/app/cn-sayin/id899649826?mt=8"}
+			],
+			"images": [
+				{"src": "/images/cn_sayin_1.jpeg", "loaded": false},
+				{"src": "/images/cn_sayin_3.jpeg", "loaded": false}
+			],
+			"tools": ["JavaScript","Angular", "HTML5", "CSS3"]
+		},
+		{
+			"title": "David Ragsdale Portfolio",
+			"client": "David Ragsdale",
+			"descriptionShort": "A portfolio of David's photography work with high-profile clients.",
+			"description": "A portfolio of David's photography work with high-profile clients.",
+			"links": [
+				{"title": "Visit the site", "url": "http://www.david-ragsdale.com/"}
+			],
+			"images": [
+				{"src": "/images/david_1.png", "loaded": false},
+				{"src": "/images/david_2.png", "loaded": false}
+			],
+			"tools": ["JavaScript", "jQuery", "HTML5", "CSS3", "Bootstrap"]
+		},
+		{
+			"title": "Wheedu",
+			"client": "Wheedu",
+			"descriptionShort": "Web and Mobile Collaboration Platform",
+			"description": "Wheedu is a brand new community collaboration platform dedicated to revolutionizing the way communities work together. Wheedu aims to remove the need for spreadsheets, email and phone lists to empower organizers to run their organizations easily and effectively. Wheedu features both a Web and Mobile environment.",
+			"links": [
+				{"title": "Visit the site", "url": "http://www.wheedu.com"}
+			],
+			"images": [
+				{"src": "/images/wheedu_4.png", "loaded": false},
+				{"src": "/images/wheedu_2.png", "loaded": false},
+				{"src": "/images/wheedu_3.png", "loaded": false},
+				{"src": "/images/wheedu_1.png", "loaded": false}
+			],
+			"tools": ["JavaScript", "AngularJS", "HTML5", "NodeJS", "CSS3", "Bootstrap", "jQuery", "Ruby on Rails"]
+		},
+		{
+			"title": "Metroidvania - HTML5 multiplayer game",
+			"descriptionShort": "A multiplayer game using the Javascript multiplayer framework I built 'socketObject', inspired by the Castlevania series",
+			"description": "A multiplayer game using the Javascript multiplayer framework I built 'socketObject', inspired by the Castlevania series",
+			"links": [
+				{"title": "View the game code", "url": "https://github.com/natemcdowel/metroidvania"},
+				{"title": "View the framework code", "url": "https://github.com/natemcdowel/socketObject"}
+			],
+			"images": [
+				{"src": "/images/metroidvania_1.png", "loaded": false},
+				{"src": "/images/metroidvania_2.png", "loaded": false},
+				{"src": "/images/metroidvania_3.png", "loaded": false}
+			],
+			"tools": ["JavaScript", "NodeJS", "Socket.io", "socketObject", "MelonJS","jQuery", "HTML5", "CSS3"]
+		},
+		{
+			"title": "Fashion Mix",
+			"descriptionShort": "I built the HTML5 Image tools for this wardrobe accessorizing site.",
+			"description": "Find new styles, mix them, then shop! www.fashionmix.com is the hottest new way to amp up your wardrobe and connect with friends.",
+			"links": [
+				{"title": "View the site", "url": "http://fashionmix.com/"}
+			],
+			"images": [
+				{"src": "/images/fashion_1.png", "loaded": false},
+				{"src": "/images/fashion_2.png", "loaded": false}
+			],
+			"tools": ["JavaScript", "jQuery", "HTML5", "CSS3"]
+		}
+	]
+}

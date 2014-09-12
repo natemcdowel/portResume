@@ -1,0 +1,22 @@
+/* COMMON.SCSS
+- Handles common styles across the site for things like fonts, colors, and icons
+*/
+
+// FONTS ///////////
+$font-myriad-pro: "myriad-pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// COLORS //////////
+$lime  : #0099FF;
+$black : #000;
+$white : #FFF;
+
+// EASING //////////
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+
+// SPACING /////////
+$padding: 30px;
+
+// IMAGES //////////
+$background-pattern: url(/images/background.png) repeat #000;
+$background-pattern-2x: url(/images/background_@2X.png) repeat #000 !important;

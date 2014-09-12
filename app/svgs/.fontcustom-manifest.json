@@ -1,0 +1,18 @@
+{
+  "fonts": [
+    "/Users/justin/Documents/Portfolio/site/app/svgs/fontcustom/fontcustom_07adde895b81ce2436cf677a3fddccfe.ttf",
+    "/Users/justin/Documents/Portfolio/site/app/svgs/fontcustom/fontcustom_07adde895b81ce2436cf677a3fddccfe.woff",
+    "/Users/justin/Documents/Portfolio/site/app/svgs/fontcustom/fontcustom_07adde895b81ce2436cf677a3fddccfe.eot",
+    "/Users/justin/Documents/Portfolio/site/app/svgs/fontcustom/fontcustom_07adde895b81ce2436cf677a3fddccfe.svg"
+  ],
+  "templates": [
+    "/Users/justin/Documents/Portfolio/site/app/svgs/fontcustom/_fontcustom.scss",
+    "/Users/justin/Documents/Portfolio/site/app/svgs/fontcustom/fontcustom-preview.html"
+  ],
+  "glyphs": [
+    "close",
+    "logo-rotated",
+    "logo",
+    "plus"
+  ]
+}

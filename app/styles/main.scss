@@ -1,0 +1,493 @@
+/* MAIN.SCSS
+- Overall styles for the site
+*/
+
+// IMPORTS ///////////////
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/css3/images";
+@import "compass/css3/text-shadow";
+@import "compass/css3/box-shadow";
+@import '_mixins';
+@import '_common';
+@import '_fontcustom';
+@import '_mediaqueries';
+@import '_fallbacks';
+
+// BODY & CONTAINER //////
+html, body { @include size(100%, 100%); padding: 0; margin: 0; -webkit-overflow-scrolling: touch; -webkit-text-size-adjust: none; }
+body {
+    @include font($family: $font-myriad-pro, $color: $white, $size: 14px, $line-height: 24px, $weight: 400, $letter-spacing: 1px);
+    background: $background-pattern;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+// GLOBAL ///////////////
+// overall styles across all sections & elements
+::selection {
+    color: $lime;
+    background: $black;
+}
+::-moz-selection {
+    color: $lime;
+    background: $black;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: $black;
+}
+::-webkit-scrollbar-thumb {
+    background: $lime;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: $lime;
+}
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    list-style: none;
+}
+a {
+    @include font($color: $lime, $text-decoration: none);
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+.alpha, .omega {
+    width: 50%;
+}
+.alpha { float: left; }
+.omega { float: right; }
+.close-button {
+    cursor: pointer;
+    &:hover, &:focus {
+        .fc-icon-close {
+            @include font($color: $lime);
+            @include scale(-1,1);
+        }
+    }
+}
+.browsehappy {
+	@include position-fixed($z-index: 99);
+	@include size(100%, 48px);
+	@include font($size: 18px, $text-align: center, $weight: 300);
+	background: $background-pattern;
+	margin: 0;
+	padding-top: 20px;
+}
+
+// ICONS /////////////////
+// icon styles for fontcustom
+.fc-icon {
+    @include font($size: 54px, $color: #FFF);
+    display: inline-block;
+}
+.fc-icon-close {
+    @include single-transition(all, 0.2s, $ease-out-quad);
+    @include scale(1,1);
+    @include font($size: 47px);
+}
+.fc-icon-plus {
+    @include font($color: #000, $size: 32px);
+}
+
+// CONTAINER /////////////
+// holds everything. grid, about, project details, etc
+#container {
+    @include size(inherit, inherit);
+    &.four-up {
+        .grid-project { width: 25%; }
+    }
+    &.three-up {
+        .grid-project { width: 33.333%; }
+    }
+    &.two-up {
+        .grid-project { width: 50%; }
+    }
+    &.one-up {
+        .grid-project { width: 100%; }
+    }
+}
+
+// GRID //////////////////
+#grid {
+    @include size(inherit, inherit);
+    position: relative;
+    .grid-project {
+        position: relative;
+        z-index: 1;
+        &.active {
+            z-index: 2;
+        }
+    }
+}
+.grid-row-container {
+    @include position-relative($z-index: 1);
+    &.active {
+        z-index: 2;
+    }
+    .grid-row {
+        height: 100%;
+    }
+}
+
+// GRID ITEM //////////////////
+.grid-project {
+    height: 100%;
+    background-size: cover;
+    float: left;
+    z-index: 1;
+    .selected-container {
+        @include size($width: 100%, $height: 100%);
+        position: absolute;
+        overflow: hidden;
+    }
+    .selected-tip {
+        @include single-transition(bottom, 0.25s, $ease-out-quad);
+        @include position-absolute($bottom: -64px, $left: 50%, $z-index: 3);
+        @include size-centered(111px, 66px);
+        background: url(/images/selected.png) no-repeat;
+    }
+    .info {
+        @include single-text-shadow(1px, 1px, 7px, false, $black);
+    }
+    &.animate {
+        z-index: 2;
+    }
+    &.selected {
+        .item-link {
+            cursor: default;
+        }
+        .gradient, .info {
+            opacity: 0 !important;
+        }
+        .more-info:before, .fc-icon-plus {
+            right: -100px !important;
+            bottom: -100px !important;
+        }
+        .selected-tip {
+            bottom: -18px;
+        }
+    }
+}
+.item-link {
+    @include position-absolute($z-index: 10);
+    @include size(100%, 100%);
+    display: block;
+    overflow: hidden;
+    .gradient {
+        @include single-transition(opacity, 0.15s, linear);
+        @include background-image(linear-gradient(transparent 50%, #000 100%));
+        @include size(100%, 100%);
+        @include position-absolute($z-index: 1);
+        opacity: 0;
+    }
+    .info {
+        @include single-transition(opacity, 0.15s, linear);
+        @include position-absolute($bottom: 0, $z-index: 2);
+        @include font($color: #FFF);
+        padding: 0 100px $padding $padding;
+        opacity: 0;
+        .title {
+            @include font($size: 24px);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .client {
+            @include font($size: 12px, $color: #CCC);
+        }
+        p {
+            @include font($size: 14px, $weight: 300);
+            margin: 0;
+        }
+    }
+    .more-info {
+        .fc-icon-plus {
+            @include transition(bottom 0.25s $ease-out-quad, right 0.25s $ease-out-quad);
+            @include position-absolute($bottom: -100px, $right: -100px, $z-index: 3);
+        }
+        &:before {
+            @include single-transition(all, 0.15s, $ease-out-quad);
+            @include position-absolute($right: -100px, $bottom: -100px, $z-index: 2);
+            border-right: 100px solid $lime;
+            border-top: 100px solid transparent;
+            width: 0;
+            content: '';
+        }
+        &:hover, &:focus {
+            &:before {
+                border-right: 100px solid $black;
+            }
+            .fc-icon-plus {
+                color: #FFF;
+            }
+        }
+    }
+}
+.item-content {
+    position: relative;
+}
+.no-touch {
+    .item-link {
+        .title, .client, p {
+            @include single-transition(bottom, 0.175s, $ease-out-quad);
+            position: relative;
+            bottom: -150px;
+        }
+        .client {
+            @include transition-delay(0.05s);
+        }
+        p {
+            @include transition-delay(0.075s);
+        }
+        &:hover, &:focus {
+            .info {
+                opacity: 1;
+            }
+            .title, .client, p {
+                bottom: 0px;
+            }
+            .gradient {
+                opacity: 0.9;
+            }
+            .more-info:before {
+                @include position-absolute($right: 0px, $bottom: 0px);
+            }
+            .fc-icon-plus {
+                bottom: 10px;
+                right: 12px;
+            }
+        }
+    }
+}
+
+// ITEM CUBE ////////////////
+.item-content, .item-cube-container, .item-cube, .item-cube .side {
+    @include size(100%, 100%);
+}
+.item-cube-container {
+    @include perspective(600px);
+}
+.item-cube {
+    @include transform-style(preserve-3d);
+    position: relative;
+    img {
+        @include size(1px, 1px);
+        visibility: hidden;
+        display: block;
+        overflow: hidden;
+    }
+    .side {
+        @include backface-visibility(hidden);
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        &.one { z-index: 2; }
+        &.two { z-index: 1; }
+        &.archive, &.inactive {
+            display: none;
+        }
+        &.archive, &.archive-active {
+            &.one { z-index: 4; }
+            &.two { z-index: 3; }
+        }
+    }
+    &.animate {
+        @include enable-fast-image-rendering();
+        @include enable-webkit-acceleration();
+        .side {
+            @include enable-fast-image-rendering();
+        }
+    }
+}
+
+// PROJECT ///////////////////
+.project-details {
+    overflow: hidden;
+    position: relative;
+    .alpha, .omega {
+        .project-details-inner {
+            padding: $padding;
+        }
+    }
+    .omega .project-details-inner {
+        padding-left: 0px;
+    }
+    p {
+        @include font($size: 16px, $line-height: 32px);
+        margin: 0 0 20px 0;
+    }
+    .disclaimer {
+    	@include font($size: 12px);
+    }
+    h1 {
+        @include font($color: $lime, $weight: 300);
+        margin: $padding $padding * 2 0 $padding;
+    }
+    h2 {
+        @include font($color: $lime, $weight: 400, $size: 14px);
+        margin: 0;
+    }
+    li {
+    	font-size: 16px;
+        &:not(:first-child) {
+            margin-top: 6px;
+        }
+    }
+    .top-row {
+        div {
+            float: left;
+            margin-right: 30px;
+        }
+    }
+    .tools {
+        clear: both;
+        padding-top: $padding;
+    }
+    .close-button {
+        @include position-absolute($top: $padding - 10, $right: $padding - 10);
+    }
+}
+
+// LOGO //////////////////////
+#logo {
+    @include position-fixed($z-index: 3);
+    cursor: pointer;
+    width: 0px;
+    a {
+    	@include position-relative($left: -75px, $top: -75px);
+    	@include size(150px, 150px);
+        // for some reason, using the compass rotate mixin doesn't work in ie9
+        // using no prefix "transform:" also breaks ie9 as well
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+    	display: block;
+    	background: $background-pattern;
+        &:hover {
+            .fc-icon {
+                color: $lime;
+            }
+        }
+    }
+    .fc-icon-logo {
+    	@include position-absolute($right: 45px, $top: 90px);
+    }
+}
+
+// ABOUT ////////////////////
+
+#about-details {
+    @include position-fixed($z-index: 3);
+    @include single-box-shadow(rgba(0, 0, 0, 0.8), 0px, 10px, 25px);
+    width: 100%;
+    background: $background-pattern;
+    .close-button {
+        @include position-absolute($right: $padding, $top: $padding);
+    }
+    .fc-icon-logo-rotated {
+        @include position-absolute($left: $padding, $top: 18px);
+        float: left;
+        font-size: 74px;
+    }
+    .column {
+        width: 25%;
+        float: left;
+        padding-top: $padding;
+    }
+    #name {
+        span {
+            display: inline-block;
+            margin-left: 130px;
+        }
+    }
+}
+
+// ANIMATIONS ////////////////
+// TODO: create mixin for angular animations?
+#grid {
+    @include single-transition(padding-top, 0.51s, $ease-out-quad);
+    padding-top: 0px;
+    &.about-active {
+        padding-top: 110px;
+    }
+}
+.csstransitions {
+    // angular animations
+    .about-animation {
+        height: 110px;
+        overflow: hidden;
+        &.ng-enter, &.ng-leave {
+            @include single-transition(height, 0.5s, $ease-out-quad);
+        }
+        &.ng-enter { height: 0px; }
+        &.ng-enter-active, &.ng-leave { height: 110px; }
+        &.ng-leave-active { height: 0px; }
+    }
+    .project-animation {
+        max-height: 750px;
+        &.ng-enter, &.ng-leave {
+            @include single-transition(max-height, 0.5s, $ease-out-quad);
+        }
+        &.ng-enter { max-height: 0px; }
+        &.ng-enter-active, &.ng-leave { max-height: 750px; }
+        &.ng-leave-active { max-height: 0px; }
+    }
+    #logo.logo-animation {
+        &.ng-hide-add, &.ng-hide, &.ng-hide-remove {
+            display: block !important;
+        }
+        &.ng-animate {
+        	@include single-transition(background, 0.5s, $ease-out-quad);
+	        a { @include single-transition(all, 0.6s); }
+	        a i { @include single-transition(all, 0.5s, $ease-out-quad); }
+        	pointer-events: none !important;
+        	cursor: default;
+        }
+        &.ng-hide-remove {
+        	a i {
+        		top: 90px;
+        		right: 45px;
+        		font-size: 54px;
+        		color: #FFF;
+        	}
+        }
+        &.ng-hide {
+        	a {
+        		background: transparent;
+        		&:hover, &:focus {
+        			i { color: $lime; }
+        		}
+        	}
+        	a i {
+        		@include font($size: 64px, $color: $white);
+        		top: 122px;
+        		right: 36px;
+        	}
+        }
+    }
+    .item-load-animation {
+        @include single-transition(all, 0.5s, $ease-out-quad);
+        @include scale(1, 1);
+        opacity: 1;
+        &.ng-hide-add, &.ng-hide-remove {
+            display: block !important;
+        }
+        &.ng-hide { @include scale(0,0); opacity: 0; }
+        &.ng-show { @include scale(1,1); opacity: 1; }
+    }
+}

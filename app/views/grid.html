@@ -1,0 +1,68 @@
+<div id="container" class="{{gridClass(grid.projectsPerRow)}}">
+	<div id="about-details" class="about-animation" ng-if="about.active">
+		<div id="name" class="column">
+			<span>
+				{{about.data.name}}<br/>
+				{{about.data.profession}}
+			</span>
+		</div>
+		<div id="contact" class="column">
+			<span>
+				{{about.data.contact.title}}<br/>
+				<a class="email" href="mailto:{{about.data.contact.contacts[0].url}}" target="_blank">{{about.data.contact.contacts[0].title}}</a> or <a href="{{about.data.contact.contacts[1].url}}" target="_blank">{{about.data.contact.contacts[1].title}}</a>
+			</span>
+		</div>
+		<div id="resume" class="column">
+			<span>
+				{{about.data.resume.title}}<br/>
+				<a href="{{about.data.resume.link.url}}" target="_blank">{{about.data.resume.link.title}}</a>
+			</span>
+		</div>
+		<div id="source" class="column">
+			<span>
+				{{about.data.source.title}}<br/>
+				<a href="{{about.data.source.link.url}}" target="_blank">{{about.data.source.link.title}}</a>
+			</span>
+		</div>
+		<a class="close-button" ng-click="about.active = !about.active"><i class="fc-icon fc-icon-close"></i></a>
+	</div>
+	<div id="logo" class="logo-animation" ng-hide="about.active">
+		<a ng-click="about.active = !about.active"><i class="fc-icon fc-icon-logo"></i></a>
+	</div>
+	<div id="grid" js-grid-resize ng-class="{'about-active' : about.active}">
+		<div class="grid-row-container" ng-repeat="row in grid.rows track by $index">
+			<div class="grid-row" ng-style="{'height': rowHeight+'px'}">
+				<div class="grid-project" ng-repeat="project in projects | filter:{row: $index}:true" js-grid-project ng-class="{active : project.cube.transition, selected : project.selected}" ng-include="templates.item" data-index="{{$index}}"></div>
+			 </div>
+			 <div js-project-details-directive class="project-details project-animation" ng-if="projectDetails.row == $index">
+			 	<a class="close-button" ui-sref="index.grid"><i class="fc-icon fc-icon-close"></i></a>
+			 	<h1>{{projectDetails.title}}</h1>
+			 	<div class="alpha">
+			 		<div class="project-details-inner">
+			 			<p ng-bind-html="projectDetails.description"></p>
+			 			<span ng-if="projectDetails.luxDisclaimer" class="disclaimer">Links below are property of <a href="http://www.luxanimals.com" target="_blank">Luxurious Animals</a></span>
+			 			<ul>
+			 				<li ng-repeat="link in projectDetails.links"><a href="{{link.url}}" target="_blank">{{link.title}}</a></li>
+			 			</ul>
+			 		</div>
+			 	</div>
+			 	<div class="omega">
+			 		<div class="project-details-inner">
+			 			<div class="top-row">
+			 				<div class="client" ng-if="projectDetails.client"><h2>Client</h2>{{projectDetails.client}}</div>
+			 				<div class="company" ng-if="projectDetails.company"><h2>Company</h2>{{projectDetails.company}}</div>
+			 				<div class="awards" ng-if="projectDetails.awards">
+			 					<h2>Awards</h2>
+			 					<span class="award" ng-repeat="award in projectDetails.awards"><span ng-if="$index !== 0">, </span>{{award}}</span>
+			 				</div>
+			 			</div>
+			 			<div class="tools" ng-if="projectDetails.tools">
+			 				<h2>Tools</h2>
+			 				<span class="tool" ng-repeat="tool in projectDetails.tools"><span ng-if="$index !== 0">, </span>{{tool}}</span>
+			 			</div>
+			 		</div>
+			 	</div>
+			 </div>
+		 </div>
+	</div>
+</div>
